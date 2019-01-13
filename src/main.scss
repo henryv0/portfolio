@@ -1,11 +1,16 @@
 @import "normalize.css";
 
+$body-color: #333;
+$pink: #ff71ce;
+$purple: #8897e5;
+
 body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
 
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: "Rubik", Helvetica, sans-serif;
+  color: $body-color;
 }
 
 canvas {
@@ -20,25 +25,89 @@ canvas {
     content: "";
     height: 100px;
     width: 100px;
-    background-color: red;
     top: 0;
   }
 }
 
 .l-overlay {
+  display: flex;
+  align-items: center;
   position: absolute;
   height: 100%;
   width: 100%;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  // color: white;
+  // background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1;
 
-  // border-top: 5px solid yellow;
+  border-top: 5px solid $pink;
   // border: 5px solid white;
 }
 
 .l-container {
   width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1200px;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.c-about {
+  // margin-top: 33vh;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  &__heading {
+    font-size: 3rem;
+  }
+  &__text {
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.c-link {
+  color: inherit;
+  position: relative;
+  text-decoration: none;
+
+  &:before,
+  &:after {
+    content: "";
+    // display: block;
+    height: 0.5rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    // background-color: black;
+  }
+
+  &:before {
+    // background-color: #ccc;
+    background-color: $pink;
+  }
+
+  &:after {
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+    transform-origin: 0 50%;
+  }
+}
+
+.c-link:hover {
+  // color: blue;
+
+  &:after {
+    transform: scaleX(1);
+  }
+}
+
+.c-link--twitter {
+  &:after {
+    background-color: #1da1f2;
+  }
+}
+
+.c-link--github {
+  &:after {
+    background-color: #6e5494;
+  }
 }
