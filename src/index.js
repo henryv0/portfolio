@@ -1,24 +1,39 @@
 import "./main.scss";
 import * as THREE from "three";
 
-/*
- * SETTING THREE JS SCENE
- */
+const WIDTH = window.innerWidth;
+const HEIGHT = window.innerHeight;
 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+const VIEW_ANGLE = 45;
+const ASPECT = WIDTH / HEIGHT;
+const NEAR = 1;
+const FAR = 10000;
+
+const container = document.querySelector("#container");
+
+const renderer = new THREE.WebGLRenderer({
+  alpha: true
+});
+const camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+
+const scene = new THREE.Scene();
+scene.add(camera);
+
+// renderer.setSize(WIDTH, HEIGHT);
+// renderer.setClearColorHex(0x000000, 1);
+
+// container.appendChild(renderer.domElement);
+
 document.body.appendChild(renderer.domElement);
 
-var camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  1,
-  10000
-);
-camera.position.set(0, 0, 100);
-camera.lookAt(new THREE.Vector3(0, 0, 0));
-
-var scene = new THREE.Scene();
+// var camera = new THREE.PerspectiveCamera(
+//   75,
+//   window.innerWidth / window.innerHeight,
+//   1,
+//   10000
+// );
+// camera.position.set(0, 0, 100);
+// camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 /*
  * ADD ASSETS
